@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E0E02D3C-E8E0-4A5B-B1E7-A2F8E842E11C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Server</RootNamespace>
+    <AssemblyName>GameServer</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Server.GameServer</StartupObject>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Ghost\Accounts\Account.cs" />
+    <Compile Include="Ghost\Accounts\NoAccountException.cs" />
+    <Compile Include="Ghost\Characters\Character.cs" />
+    <Compile Include="Ghost\Characters\CharacterPets.cs" />
+    <Compile Include="Ghost\Characters\CharacterItems.cs" />
+    <Compile Include="GameServer.cs" />
+    <Compile Include="Ghost\Characters\CharacterQuests.cs" />
+    <Compile Include="Ghost\Characters\CharacterKeyMap.cs" />
+    <Compile Include="Ghost\Characters\CharacterShop.cs" />
+    <Compile Include="Ghost\Characters\CharacterParty.cs" />
+    <Compile Include="Ghost\Characters\CharacterStorages.cs" />
+    <Compile Include="Ghost\Characters\CharacterTrade.cs" />
+    <Compile Include="Ghost\Characters\CharacterUseSlot.cs" />
+    <Compile Include="Ghost\Commodity.cs" />
+    <Compile Include="Ghost\Pet.cs" />
+    <Compile Include="Ghost\Map\Drop.cs" />
+    <Compile Include="Ghost\Item.cs" />
+    <Compile Include="Ghost\Characters\CharacterSkills.cs" />
+    <Compile Include="Ghost\ItemData.cs" />
+    <Compile Include="Ghost\Map.cs" />
+    <Compile Include="Ghost\Map\Loot.cs" />
+    <Compile Include="Ghost\Provider\CashShopFactory.cs" />
+    <Compile Include="Ghost\Provider\ItemFactory.cs" />
+    <Compile Include="Ghost\Provider\MapFactory.cs" />
+    <Compile Include="Ghost\Provider\MobFactory.cs" />
+    <Compile Include="Ghost\Provider\PetFactory.cs" />
+    <Compile Include="Ghost\Quest.cs" />
+    <Compile Include="Ghost\Shortcut.cs" />
+    <Compile Include="Ghost\Member.cs" />
+    <Compile Include="Ghost\Skill.cs" />
+    <Compile Include="Ghost\Storage.cs" />
+    <Compile Include="Net\Handler\ActionHandler.cs" />
+    <Compile Include="Net\Handler\CashShopHandler.cs" />
+    <Compile Include="Net\Handler\CouponHandler.cs" />
+    <Compile Include="Net\Handler\FishHandler.cs" />
+    <Compile Include="Net\Handler\InventoryHandler.cs" />
+    <Compile Include="Net\Handler\MapHandler.cs" />
+    <Compile Include="Net\Handler\MonsterHandler.cs" />
+    <Compile Include="Net\Handler\NpcShopHandler.cs" />
+    <Compile Include="Net\Handler\PartyHandler.cs" />
+    <Compile Include="Net\Handler\PetHandler.cs" />
+    <Compile Include="Net\Handler\PlayerShopHandler.cs" />
+    <Compile Include="Net\Handler\PvPHandler.cs" />
+    <Compile Include="Net\Handler\QuestHandler.cs" />
+    <Compile Include="Net\Handler\SkillHandler.cs" />
+    <Compile Include="Net\Handler\SpiritHandler.cs" />
+    <Compile Include="Net\Handler\StatusHandler.cs" />
+    <Compile Include="Net\Handler\StorageHandler.cs" />
+    <Compile Include="Interoperability\InteroperabilityClient.cs" />
+    <Compile Include="Net\Client.cs" />
+    <Compile Include="Net\Handler\GameHandler.cs" />
+    <Compile Include="Net\Handler\TradeHandler.cs" />
+    <Compile Include="Net\Packet\CashShopPacket.cs" />
+    <Compile Include="Net\Packet\FishPacket.cs" />
+    <Compile Include="Net\Packet\GamePacket.cs" />
+    <Compile Include="Ghost\Monster.cs" />
+    <Compile Include="Net\Packet\InventoryPacket.cs" />
+    <Compile Include="Net\Packet\MapPacket.cs" />
+    <Compile Include="Net\Packet\MonsterPacket.cs" />
+    <Compile Include="Net\Packet\PartyPacket.cs" />
+    <Compile Include="Net\Packet\PetPacket.cs" />
+    <Compile Include="Net\Packet\PlayerShopPacket.cs" />
+    <Compile Include="Net\Packet\PvPPacket.cs" />
+    <Compile Include="Net\Packet\QuestPacket.cs" />
+    <Compile Include="Net\Packet\SkillPacket.cs" />
+    <Compile Include="Net\Packet\StatusPacket.cs" />
+    <Compile Include="Net\GameServerHandler.cs" />
+    <Compile Include="Net\Packet\StoragePacket.cs" />
+    <Compile Include="Net\Packet\TradePacket.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{00970dfc-5416-4ace-bc47-5d7adbe2af8d}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
