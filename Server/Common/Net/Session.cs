@@ -220,14 +220,30 @@ namespace Server.Common.Net
                     Buffer.BlockCopy(packet, 0, ret, 4, packet.Length); // copy packet to ret
                     Buffer.BlockCopy(new byte[2] { 0x55, 0xAA }, 0, ret, packet.Length + 4, 2); // copy end to ret
                 }
-                else
+                else if (m_socket.LocalEndPoint.ToString().Split(':')[1] == "15010") //Get Characters information
                 {
                     ret = new byte[packet.Length + 2];
-                    int a = 0x4D;
+                    int a = 0x0105;
                     int b = (packet[0]) + (packet[1] << 8);
                     int c = ret.Length;
                     int crc = a + b + c;
-                    var header = new byte[8] { 0x4D, 0x00,
+                    var header = new byte[8] { 0x05, 0x01,
+                            packet[0], packet[1],
+                            (byte)(ret.Length & 0xFF), (byte)((ret.Length >> 8) & 0xFF),
+                            (byte)(crc & 0xFF), (byte)((crc >> 8) & 0xFF)
+                        };
+                    Log.Inform("packet length char : {0}", packet.Length);
+                    Buffer.BlockCopy(header, 0, ret, 0, 8); // copy header to ret
+                    Buffer.BlockCopy(packet, 6, ret, 8, packet.Length - 6); // copy packet to ret
+                }
+                else
+                {
+                    ret = new byte[packet.Length + 2];
+                    int a = 0x0105;
+                    int b = (packet[0]) + (packet[1] << 8);
+                    int c = ret.Length;
+                    int crc = a + b + c;
+                    var header = new byte[8] { 0x05, 0x01,
                             packet[0], packet[1],
                             (byte)(ret.Length & 0xFF), (byte)((ret.Length >> 8) & 0xFF),
                             (byte)(crc & 0xFF), (byte)((crc >> 8) & 0xFF)

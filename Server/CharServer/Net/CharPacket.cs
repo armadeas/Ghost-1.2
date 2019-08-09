@@ -105,15 +105,20 @@ namespace Server.Ghost
         {
             plew.WriteString(chr != null ? chr.Name : "", 20);
             plew.WriteString(chr != null ? chr.Title : "", 20);
+            plew.WriteByte(1); //Faction ?
             plew.WriteByte(chr != null ? chr.Gender : 0);
             plew.WriteByte(chr != null ? chr.Level : 0);
             plew.WriteByte(chr != null ? chr.Class : 0);
             plew.WriteByte(chr != null ? chr.ClassLevel : 0);
             plew.WriteByte(0);
             plew.WriteByte(0);
-            plew.WriteByte(0);
-            plew.WriteByte(0);
+            plew.WriteByte(chr != null ? 0xFF : 0);
+            //plew.WriteByte(0);
             plew.WriteShort(0);
+            plew.WriteShort(chr != null ? 1 : 0);
+            plew.WriteShort(chr != null ? 1 : 0);
+            plew.WriteShort(chr != null ? 1 : 0);
+            plew.WriteShort(chr != null ? 1 : 0);
             plew.WriteShort(0);
             Dictionary<InventoryType.EquipType, int> equip = getEquip(chr);
             plew.WriteInt(equip.ContainsKey(InventoryType.EquipType.Weapon) ? equip[InventoryType.EquipType.Weapon] : 0); // 武器[Weapon] 8010101
@@ -125,6 +130,17 @@ namespace Server.Ghost
             plew.WriteInt(equip.ContainsKey(InventoryType.EquipType.Mantle) ? equip[InventoryType.EquipType.Mantle] : 0); // 服裝[outfit] 9510081
             plew.WriteInt(equip.ContainsKey(InventoryType.EquipType.Dress) ? equip[InventoryType.EquipType.Dress] : 0);   // 披風[mantle] 8493122
             plew.WriteInt(chr != null ? chr.Hair : 0);                                                                    // 頭髮[Hair]   9010011
+            plew.WriteInt(0); //i don't know
+            plew.WriteInt(0); //i don't know
+            plew.WriteInt(chr != null ? 9000005 : 0); //i don't know
+            plew.WriteShort(chr != null ? 1 : 0);
+            plew.WriteShort(0);
+            plew.WriteShort(chr != null ? 1 : 0);
+            plew.WriteShort(0);
+            plew.WriteShort(0);
+            plew.WriteShort(0);
+
+
         }
 
         public static Dictionary<InventoryType.EquipType, int> getEquip(Character chr)
